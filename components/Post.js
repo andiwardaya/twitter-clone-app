@@ -40,6 +40,18 @@ const Posts = ({ id, post, postPage }) => {
 
   useEffect(
     () =>
+      onSnapshot(
+        query(
+          collection(db, "posts", id, "comments"),
+          orderBy("timestamp", "desc")
+        ),
+        (snapshot) => setComments(snapshot.docs)
+      ),
+    [db, id]
+  );
+
+  useEffect(
+    () =>
       onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
         setLikes(snapshot.docs)
       ),
@@ -81,7 +93,7 @@ const Posts = ({ id, post, postPage }) => {
         <div className={`flex ${!postPage} && "justify-between`}>
           {postPage && (
             <img
-              src={post.userImg}
+              src={post?.userImg}
               alt="Profile Pic"
               className="h-11 w-11 rounded-full mr-4"
             />
@@ -98,7 +110,7 @@ const Posts = ({ id, post, postPage }) => {
               <span
                 className={`text-sm sm:text-[15px] ${!postPage && "ml-1.5"}`}
               >
-                @{post.tag}
+                @{post?.tag}
               </span>
             </div>{" "}
             ·{" "}
