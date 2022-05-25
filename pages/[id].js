@@ -18,6 +18,7 @@ import { db } from "../firebase";
 import { ArrowLeftIcon } from "@heroicons/react/solid";
 import Comment from "../components/Comment";
 import Head from "next/head";
+import Widgets from "../components/Widgets";
 
 function PostPage({ trendingResults, followResults, providers }) {
   const { data: session } = useSession();
@@ -49,7 +50,6 @@ function PostPage({ trendingResults, followResults, providers }) {
 
   if (!session) return <Login providers={providers} />;
 
-  console.log(router);
   return (
     <div>
       <Head>
@@ -72,6 +72,7 @@ function PostPage({ trendingResults, followResults, providers }) {
           </div>
 
           <Post id={id} post={post} postPage />
+
           {comments.length > 0 && (
             <div className="pb-72">
               {comments.map((comment) => (
@@ -84,7 +85,10 @@ function PostPage({ trendingResults, followResults, providers }) {
             </div>
           )}
         </div>
-
+        <Widgets
+          trendingResults={trendingResults}
+          followResults={followResults}
+        />
         {isOpen && <Modal />}
       </main>
     </div>

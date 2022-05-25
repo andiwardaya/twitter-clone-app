@@ -34,9 +34,9 @@ const Feed = () => {
   );
 
   return (
-    <div className="text-white flex-grow border-l border-r border-gray-700 max-w-2xl sm:ml-[73px] xl:ml-[350px]">
+    <div className="  text-white flex-grow border-l border-r border-gray-700 max-w-2xl sm:ml-[73px] xl:ml-[350px]">
       {/* FEED HEADER */}
-      <div className="flex items-center sm:justify-between border-b border-gray-700 text-[#d9d9d9] px-2 py-3 sticky top-0 z-50 bg-black">
+      <div className=" flex items-center sm:justify-between border-b border-gray-700 text-[#d9d9d9] px-2 py-3 sticky top-0 z-50 bg-black">
         <h4 className="text-lg sm:text-xl font-bold">Home</h4>
         <div className="hoverAnimation flex items-center justify-center w-9 h-9 xl:px-0 ml-auto">
           <SparklesIcon className="h-5 text-white" />
